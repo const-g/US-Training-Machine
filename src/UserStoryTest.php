@@ -13,4 +13,10 @@ final class UserStoryTest extends TestCase
         $UserStory = new UserStory();
         $this->assertInstanceOf(UserStory::class, $UserStory);
     }
+
+    public function testUSName(): void
+    {
+        $UserStory = new UserStory();
+        $this->assertEquals('test name', $UserStory->getName());
+    }
 }
