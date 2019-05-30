@@ -7,9 +7,12 @@ final class UserStory
 {
     private $name;
 
-    public function __construct()
+    public function __construct($_id = 0)
     {
-        $this->name = 'test name';
+        $data = file_get_contents(__DIR__ . '/../data/data.json');
+        $data = json_decode($data, TRUE);
+
+        $this->name = $data[$_id]['name'];
     }
 
     public function getName()
