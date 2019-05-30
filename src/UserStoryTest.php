@@ -9,7 +9,7 @@ final class UserStoryTest extends TestCase
 {
     public function testIsUserStory(): void
     {
-        $UserStory = new \UserStory();
-        $this->assertInstanceOf(\UserStory::class, $UserStory);
+        $UserStory = new Agile\UserStory();
+        $this->assertInstanceOf(Agile\UserStory::class, $UserStory);
     }
 }
