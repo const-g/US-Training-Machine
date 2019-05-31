@@ -1,8 +1,10 @@
 {
     "0": {
-        "name": "This is a Test"
+        "name": "This is a Test",
+        "description": "Here is the description <a href\"test.html\">with a link!</a>"
     },
     "1": {
-        "name": "First US"
+        "name": "First US",
+        "description": ""
     }
 }

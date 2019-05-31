@@ -16,13 +16,17 @@ final class UserStoryTest extends TestCase
 
     public function testUserStoryName(): void
     {
+        $data = file_get_contents(__DIR__ . '/../data/data.json');
+        $data = json_decode($data, TRUE);
         $UserStory = new UserStory(0);
-        $this->assertEquals('This is a Test', $UserStory->getName());
+        $this->assertSame($data[0]['name'], $UserStory->getName());
     }
 
-    public function testUserStoryNameById(): void
+    public function testUserStoryDescription(): void
     {
-        $UserStory = new UserStory(1);
-        $this->assertEquals('First US', $UserStory->getName());
+        $data = file_get_contents(__DIR__ . '/../data/data.json');
+        $data = json_decode($data, TRUE);
+        $UserStory = new UserStory(0);
+        $this->assertSame($data[0]['description'], $UserStory->getDescription());
     }
 }
