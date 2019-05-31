@@ -10,19 +10,19 @@ final class UserStory
 
     public function __construct($_id = 0)
     {
-        $data = file_get_contents(__DIR__ . '/../data/data.json');
+        $data = file_get_contents(dirname(__DIR__) . '/data/data.json');
         $data = json_decode($data, TRUE);
 
         $this->name = $data[$_id]['name'];
         $this->description = $data[$_id]['description'];
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
