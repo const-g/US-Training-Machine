@@ -5,25 +5,29 @@ namespace Agile;
 
 final class UserStory
 {
-    private $name;
-    private $description;
+    private $id;    
+    private $allData = [];
 
     public function __construct($_id = 0)
+    {
+        $this->allData = $this->loadData();
+        $this->id = $_id;
+    }
+
+    public function getJson(): array
+    {
+        return $this->allData[$this->id];
+    }
+
+    public function loadData(): array
     {
         $data = file_get_contents(dirname(__DIR__) . '/data/data.json');
         $data = json_decode($data, TRUE);
 
-        $this->name = $data[$_id]['name'];
-        $this->description = $data[$_id]['description'];
-    }
+        if (!empty($data)) {
+            return $data;
+        }
 
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getDescription(): string
-    {
-        return $this->description;
+        return [];
     }
 }

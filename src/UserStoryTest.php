@@ -14,22 +14,16 @@ final class UserStoryTest extends TestCase
         $this->assertInstanceOf(UserStory::class, $UserStory);
     }
 
-    public function testUserStoryName(): void
+    public function testUserStoryJson(): void
     {
-        $data = file_get_contents(dirname(__DIR__) . '/data/data.json');
-        $data = json_decode($data, TRUE);
-        $random_id = rand(0, count($data) - 1);
-        $UserStory = new UserStory($random_id);
-        $this->assertSame($data[$random_id]['name'], $UserStory->getName());
-    }
+        $UserStory = new UserStory(0);
+        $json = 
+        json_decode(
+        "{
+            \"name\": \"This is a Test\",
+            \"description\": \"Here is the description <a href\\\"test.html\\\">with a link!</a>\"
+        }", true);
 
-    public function testUserStoryDescription(): void
-    {
-        $data = file_get_contents(dirname(__DIR__) . '/data/data.json');
-        $data = json_decode($data, TRUE);
-        $random_id = rand(0, count($data) - 1);
-        $UserStory = new UserStory($random_id);
-        $this->assertSame($data[$random_id]['description'], $UserStory->getDescription());
-        $this->assertFalse(empty($UserStory->getDescription()));
+        $this->assertSame($json, $UserStory->getJson());
     }
 }
